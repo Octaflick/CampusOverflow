@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/static-components */
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
@@ -93,8 +92,7 @@ export default function Sidebar() {
                     label="Users"
                     icon={<svg viewBox='0 0 18 18' className={`w-4.5 h-4.5 ${activeItem === "Users" ? "fill-[#0c0d0e]" : "fill-[#525960]"}`}><path d="M5.5 7a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm7 0a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm-7 2C3 9 1 10.5 1 12.5V14h9v-1.5C10 10.5 8 9 5.5 9zm7 0c-.3 0-.6.1-.9.1.5.8.9 1.7.9 2.9V14h5v-1.5C17.5 10.4 15.3 9 12.5 9z" /></svg>}
                 />
-                
-                <div className="h-4"></div> {/* Spacing */}
+                <div className="h-4"></div>
 
                 <MenuButton
                     id="Companies"
@@ -108,7 +106,7 @@ export default function Sidebar() {
                 <div className='text-[11px] font-bold text-gray-950 mb-2 tracking-normal'>
                     STACK INTERNAL
                 </div>
-                {/* 5 icons row */}
+
                 <div className='flex items-center gap-[10px] mb-3 text-[#525960]'>
                     <svg viewBox='0 0 18 18' className='w-[16px] h-[16px] fill-[none] stroke-current stroke-2 stroke-linejoin-round'><path d="M4 2v14h10V2H4zm2 3h6v2H6V5zm6 7H6v-2h6v2z"/></svg>
                     <svg viewBox='0 0 18 18' className='w-[16px] h-[16px] fill-[none] stroke-current stroke-2 stroke-linejoin-round'><path d="M14.5 4H10L2.5 11.5 6.5 15.5 14 8v-4z"/><circle cx="11.5" cy="5.5" r="1.5"/></svg>

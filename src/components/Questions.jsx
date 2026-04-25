@@ -9,21 +9,28 @@ export default function Questions() {
 	const [activeTab, setActiveTab] = useState("Newest");
 	const [isMoreOpen, setIsMoreOpen] = useState(false);
 	const [isFilterOpen, setIsFilterOpen] = useState(false);
+	const [sortBy, setSortBy] = useState("");
 	const [page, setPage] = useState(1);
 	const [pageSize, setPageSize] = useState(15);
 
 	useEffect(() => {
 		setLoading(true);
 
-		
+
 		let url = `https://api.stackexchange.com/2.3/questions?order=desc&sort=creation&site=stackoverflow&filter=withbody&page=${page}&pagesize=${pageSize}`;
-		
+
 		if (activeTab === "Active") {
 			url = `https://api.stackexchange.com/2.3/questions?order=desc&sort=activity&site=stackoverflow&filter=withbody&page=${page}&pagesize=${pageSize}`;
 		} else if (activeTab === "Bountied") {
 			url = `https://api.stackexchange.com/2.3/questions/featured?order=desc&sort=activity&site=stackoverflow&filter=withbody&page=${page}&pagesize=${pageSize}`;
 		} else if (activeTab === "Unanswered") {
 			url = `https://api.stackexchange.com/2.3/questions/no-answers?order=desc&sort=activity&site=stackoverflow&filter=withbody&page=${page}&pagesize=${pageSize}`;
+		} else if (sortBy === "votes") {
+			url = `https://api.stackexchange.com/2.3/questions?order=desc&sort=votes&site=stackoverflow&filter=withbody&page=${page}&pagesize=${pageSize}`;
+		} else if (sortBy === "hot") {
+			url = `https://api.stackexchange.com/2.3/questions?order=desc&sort=hot&site=stackoverflow&filter=withbody&page=${page}&pagesize=${pageSize}`;
+		} else if (sortBy === "week") {
+			url = `https://api.stackexchange.com/2.3/questions?order=desc&sort=week&site=stackoverflow&filter=withbody&page=${page}&pagesize=${pageSize}`;
 		}
 
 		fetch(url)
@@ -36,11 +43,19 @@ export default function Questions() {
 				console.error(err);
 				setLoading(false);
 			});
-	}, [activeTab, page, pageSize]);
+	}, [activeTab, page, pageSize, sortBy]);
 
 	const handleTabChange = (tabName) => {
 		setActiveTab(tabName);
+		setSortBy("");
 		setPage(1);
+	};
+
+	const handleSortChange = (sortName) => {
+		setSortBy(sortName);
+		setActiveTab("Newest");
+		setPage(1);
+		setIsMoreOpen(false);
 	};
 
 	const timeAgo = (date) => {
@@ -105,15 +120,30 @@ export default function Questions() {
 						</button>
 
 						<div className="relative">
-							<button onClick={() => setIsMoreOpen(!isMoreOpen)} className='px-2.5 py-2 text-[#525960] hover:bg-gray-50 flex items-center gap-1 font-medium'>
-								More
+							<button onClick={() => setIsMoreOpen(!isMoreOpen)} className={`px-2.5 py-2 flex items-center gap-1 font-medium transition-colors ${sortBy ? 'text-[#0c0d0e] bg-[#e3e6e8]' : 'text-[#525960] hover:bg-gray-50'}`}>
+								{sortBy === "votes" ? "Score" : sortBy === "hot" ? "Hot" : sortBy === "week" ? "Frequent" : "Sort"}
 								<svg aria-hidden='true' className='w-2.5 h-2.5 fill-gray-500' viewBox='0 0 18 18'><path d='M1 5l8 8 8-8H1z'></path></svg>
 							</button>
 							{isMoreOpen && (
 								<div className="absolute top-full right-0 mt-1 w-32 bg-white border border-[#d6d9dc] rounded-[3px] shadow-md z-10 flex flex-col py-1 text-[13px] text-[#3b4045]">
-									<button className="px-3 py-1.5 text-left hover:bg-gray-100" onClick={() => setIsMoreOpen(false)}>Frequent</button>
-									<button className="px-3 py-1.5 text-left hover:bg-gray-100" onClick={() => setIsMoreOpen(false)}>Score</button>
-									<button className="px-3 py-1.5 text-left hover:bg-gray-100" onClick={() => setIsMoreOpen(false)}>Hot</button>
+									<button
+										className={`px-3 py-1.5 text-left hover:bg-gray-100 ${sortBy === 'week' ? 'font-bold text-[#0c0d0e] bg-gray-50' : ''}`}
+										onClick={() => handleSortChange("week")}
+									>
+										Frequent
+									</button>
+									<button
+										className={`px-3 py-1.5 text-left hover:bg-gray-100 ${sortBy === 'votes' ? 'font-bold text-[#0c0d0e] bg-gray-50' : ''}`}
+										onClick={() => handleSortChange("votes")}
+									>
+										Score
+									</button>
+									<button
+										className={`px-3 py-1.5 text-left hover:bg-gray-100 ${sortBy === 'hot' ? 'font-bold text-[#0c0d0e] bg-gray-50' : ''}`}
+										onClick={() => handleSortChange("hot")}
+									>
+										Hot
+									</button>
 								</div>
 							)}
 						</div>
@@ -219,8 +249,8 @@ export default function Questions() {
 						</>
 					)}
 
-	
-					{Array.from({length: 5}, (_, i) => {
+
+					{Array.from({ length: 5 }, (_, i) => {
 
 						let start = Math.max(1, page - 2);
 						if (start > 1610673 - 4) start = 1610673 - 4;
