@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 
@@ -73,11 +74,11 @@ export default function Questions() {
 	};
 
 	return (
-		<div className='flex-1 lg:pl-6 pl-4 pr-6 pt-6 pb-20 w-full lg:max-w-[727px] ml-[24px]'>
+		<div className='flex-1 lg:pl-6 pl-4 pr-6 pt-6 pb-20 w-full lg:max-w-181.75 ml-6'>
 
 			<div className='flex justify-between items-center mb-6'>
 				<h1 className='text-[27px] font-normal text-gray-800 tracking-tight'>Newest Questions</h1>
-				<button onClick={() => navigate('/login')} className='bg-[#0a95ff] font-medium hover:bg-[#0074cc] text-white px-3 py-[0.55rem] rounded-[3px] shadow-sm transition-colors text-[13px]'>
+				<button onClick={() => navigate('/login')} className='bg-blue-500 font-medium hover:bg-blue-600 text-white px-3 py-[0.55rem] rounded-[3px] shadow-sm transition-colors text-[13px]'>
 					Ask Question
 				</button>
 			</div>
@@ -97,19 +98,19 @@ export default function Questions() {
 							Active
 						</button>
 						<button onClick={() => handleTabChange("Bountied")} className={`${tabButtonClass("Bountied")} flex items-center gap-1`}>
-							Bountied <span className='bg-[#0a95ff] text-white text-[10px] px-1 py-[0.5px] rounded-[3px] font-bold'>3</span>
+							Bountied <span className='bg-blue-500 text-white text-[10px] px-1 py-[0.5px] rounded-[3px] font-bold'>3</span>
 						</button>
 						<button onClick={() => handleTabChange("Unanswered")} className={tabButtonClass("Unanswered")}>
 							Unanswered
 						</button>
 
 						<div className="relative">
-							<button onClick={() => setIsMoreOpen(!isMoreOpen)} className='px-[10px] py-[8px] text-[#525960] hover:bg-gray-50 flex items-center gap-1 font-medium'>
+							<button onClick={() => setIsMoreOpen(!isMoreOpen)} className='px-2.5 py-2 text-[#525960] hover:bg-gray-50 flex items-center gap-1 font-medium'>
 								More
-								<svg aria-hidden='true' className='w-[10px] h-[10px] fill-gray-500' viewBox='0 0 18 18'><path d='M1 5l8 8 8-8H1z'></path></svg>
+								<svg aria-hidden='true' className='w-2.5 h-2.5 fill-gray-500' viewBox='0 0 18 18'><path d='M1 5l8 8 8-8H1z'></path></svg>
 							</button>
 							{isMoreOpen && (
-								<div className="absolute top-[100%] right-0 mt-1 w-32 bg-white border border-[#d6d9dc] rounded-[3px] shadow-md z-10 flex flex-col py-1 text-[13px] text-[#3b4045]">
+								<div className="absolute top-full right-0 mt-1 w-32 bg-white border border-[#d6d9dc] rounded-[3px] shadow-md z-10 flex flex-col py-1 text-[13px] text-[#3b4045]">
 									<button className="px-3 py-1.5 text-left hover:bg-gray-100" onClick={() => setIsMoreOpen(false)}>Frequent</button>
 									<button className="px-3 py-1.5 text-left hover:bg-gray-100" onClick={() => setIsMoreOpen(false)}>Score</button>
 									<button className="px-3 py-1.5 text-left hover:bg-gray-100" onClick={() => setIsMoreOpen(false)}>Hot</button>
@@ -119,13 +120,13 @@ export default function Questions() {
 					</div>
 
 					<div className="relative">
-						<button onClick={() => setIsFilterOpen(!isFilterOpen)} className='flex items-center gap-[6px] text-[13px] font-medium bg-[#e1ecf4] text-[#39739d] border border-[#7aa7c7] rounded-[3px] px-[10px] py-[7px] hover:bg-[#b3d3ea] hover:text-[#2c5877] transition-colors'>
+						<button onClick={() => setIsFilterOpen(!isFilterOpen)} className='flex items-center gap-1.5 text-[13px] font-medium bg-[#e1ecf4] text-[#39739d] border border-[#7aa7c7] rounded-[3px] px-2.5 py-1.75 hover:bg-[#b3d3ea] hover:text-[#2c5877] transition-colors'>
 							<svg aria-hidden='true' className='w-4 h-4 fill-[#39739d]' viewBox='0 0 18 18'><path d='M2 4h14v2H2V4zm2 4h10v2H4V8zm2 4h6v2H6v-2z'></path></svg>
 							Filter
 						</button>
 
 						{isFilterOpen && (
-							<div className="absolute top-[100%] right-0 mt-1 w-[200px] bg-[#f8f9f9] border border-[#d6d9dc] rounded-[3px] shadow-md z-10 flex flex-col p-3 text-[13px] text-[#3b4045]">
+							<div className="absolute top-full right-0 mt-1 w-50 bg-[#f8f9f9] border border-[#d6d9dc] rounded-[3px] shadow-md z-10 flex flex-col p-3 text-[13px] text-[#3b4045]">
 								<div className="font-bold mb-2">Filter By</div>
 								<label className="flex items-center gap-2 mb-2 cursor-pointer">
 									<input type="checkbox" className="rounded border-gray-300" />
@@ -136,8 +137,8 @@ export default function Questions() {
 									No accepted answer
 								</label>
 								<div className="flex justify-between border-t border-[#d6d9dc] pt-2">
-									<button className="text-[#0074cc] hover:text-[#0a95ff]" onClick={() => setIsFilterOpen(false)}>Cancel</button>
-									<button className="bg-[#0a95ff] hover:bg-[#0074cc] text-white px-2 py-1 rounded-[3px]" onClick={() => setIsFilterOpen(false)}>Apply</button>
+									<button className="text-blue-600 hover:text-blue-500" onClick={() => setIsFilterOpen(false)}>Cancel</button>
+									<button className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded-[3px]" onClick={() => setIsFilterOpen(false)}>Apply</button>
 								</div>
 							</div>
 						)}
@@ -153,7 +154,7 @@ export default function Questions() {
 					questions.map((q) => (
 						<div key={q.question_id} className='flex py-4 border-b border-[#e3e6e8]'>
 
-							<div className='flex flex-col items-end w-[108px] pr-4 gap-[6px] flex-shrink-0 text-[13px]'>
+							<div className='flex flex-col items-end w-27 pr-4 gap-1.5 shrink-0 text-[13px]'>
 								<div className='text-[#0c0d0e]'>
 									<span className='font-medium'>{q.score}</span> votes
 								</div>
@@ -172,17 +173,17 @@ export default function Questions() {
 							</div>
 
 							<div className='flex-1 flex flex-col min-w-0'>
-								<a href={q.link} className='text-[#1b75cf] hover:text-[#0a95ff] text-[17px] leading-tight mb-[6px] break-words mt-[-2px]'>
+								<a href={q.link} className='text-[#1b75cf] hover:text-blue-500 text-[17px] leading-tight mb-1.5 wrap-break-word -mt-0.5'>
 									{decodeHtml(q.title)}
 								</a>
-								<div className='text-[13px] text-[#1a1d20] line-clamp-2 leading-[1.35] mb-[8px] break-words'>
+								<div className='text-[13px] text-[#1a1d20] line-clamp-2 leading-[1.35] mb-2 wrap-break-word'>
 									{q.body ? decodeHtml(q.body) : ""}
 								</div>
 
 								<div className='flex flex-wrap items-center justify-between gap-y-2 mt-auto'>
 									<div className='flex flex-wrap gap-1'>
 										{q.tags.map((tag) => (
-											<span key={tag} className='bg-[#e1ecf4] text-[#39739d] hover:bg-[#d0e3f1] hover:text-[#2c5877] cursor-pointer text-[12px] px-[6px] py-[4px] rounded-[3px] leading-none mb-1 mr-1'>
+											<span key={tag} className='bg-[#e1ecf4] text-[#39739d] hover:bg-[#d0e3f1] hover:text-[#2c5877] cursor-pointer text-[12px] px-1.5 py-1 rounded-[3px] leading-none mb-1 mr-1'>
 												{tag}
 											</span>
 										))}
@@ -196,7 +197,7 @@ export default function Questions() {
 												{q.owner.display_name?.charAt(0)}
 											</div>
 										)}
-										<a href={q.owner.link} className='text-[#0074cc] hover:text-[#0a95ff] mx-1'>
+										<a href={q.owner.link} className='text-blue-600 hover:text-blue-500 mx-1'>
 											{q.owner.display_name}
 										</a>
 										<span className='font-bold text-[#525960]'>{q.owner.reputation ? q.owner.reputation.toLocaleString() : ""}</span>
@@ -213,7 +214,7 @@ export default function Questions() {
 				<div className="flex items-center gap-1">
 					{page > 3 && (
 						<>
-							<button onClick={() => setPage(1)} className="px-3 py-[5px] text-[13px] border rounded-[3px] bg-white text-[#3b4045] border-[#d6d9dc] hover:bg-gray-50 transition-colors">1</button>
+							<button onClick={() => setPage(1)} className="px-3 py-1.25 text-[13px] border rounded-[3px] bg-white text-[#3b4045] border-[#d6d9dc] hover:bg-gray-50 transition-colors">1</button>
 							{page > 4 && <span className="text-[#3b4045] px-1 text-[13px] tracking-widest">...</span>}
 						</>
 					)}
@@ -228,7 +229,7 @@ export default function Questions() {
 						<button
 							key={p}
 							onClick={() => setPage(p)}
-							className={`px-3 py-[5px] text-[13px] border rounded-[3px] transition-colors ${page === p ? 'bg-[#f48225] text-white border-[#f48225]' : 'bg-white text-[#3b4045] border-[#d6d9dc] hover:bg-gray-50'}`}
+							className={`px-3 py-1.25 text-[13px] border rounded-[3px] transition-colors ${page === p ? 'bg-[#f48225] text-white border-[#f48225]' : 'bg-white text-[#3b4045] border-[#d6d9dc] hover:bg-gray-50'}`}
 						>
 							{p}
 						</button>
@@ -239,7 +240,7 @@ export default function Questions() {
 							<span className="text-[#3b4045] px-1 text-[13px] tracking-widest">...</span>
 							<button
 								onClick={() => setPage(1610673)}
-								className={`px-3 py-[5px] text-[13px] border rounded-[3px] transition-colors ${page === 1610673 ? 'bg-[#f48225] text-white border-[#f48225]' : 'bg-white text-[#3b4045] border-[#d6d9dc] hover:bg-gray-50'}`}
+								className={`px-3 py-1.25 text-[13px] border rounded-[3px] transition-colors ${page === 1610673 ? 'bg-[#f48225] text-white border-[#f48225]' : 'bg-white text-[#3b4045] border-[#d6d9dc] hover:bg-gray-50'}`}
 							>
 								1610673
 							</button>
@@ -249,7 +250,7 @@ export default function Questions() {
 
 					<button
 						onClick={() => setPage(p => Math.min(1610673, p + 1))}
-						className="px-3 py-[5px] text-[13px] border border-[#d6d9dc] rounded-[3px] text-[#3b4045] bg-white hover:bg-gray-50 transition-colors"
+						className="px-3 py-1.25 text-[13px] border border-[#d6d9dc] rounded-[3px] text-[#3b4045] bg-white hover:bg-gray-50 transition-colors"
 					>
 						Next
 					</button>
@@ -261,13 +262,13 @@ export default function Questions() {
 							<button
 								key={size}
 								onClick={() => { setPageSize(size); setPage(1); }}
-								className={`px-3 py-[5px] text-[13px] border rounded-[3px] transition-colors ${pageSize === size ? 'bg-[#f48225] text-white border-[#f48225]' : 'bg-white text-[#3b4045] border-[#d6d9dc] hover:bg-gray-50'}`}
+								className={`px-3 py-1.25 text-[13px] border rounded-[3px] transition-colors ${pageSize === size ? 'bg-[#f48225] text-white border-[#f48225]' : 'bg-white text-[#3b4045] border-[#d6d9dc] hover:bg-gray-50'}`}
 							>
 								{size}
 							</button>
 						))}
 					</div>
-					<span className="text-[13px] text-[#3b4045]">per page</span>
+					<span className="text-[13px] text-gray-500">per page</span>
 				</div>
 			</div>
 		</div>
