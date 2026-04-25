@@ -14,8 +14,9 @@ export default function Questions() {
 	useEffect(() => {
 		setLoading(true);
 
+		
 		let url = `https://api.stackexchange.com/2.3/questions?order=desc&sort=creation&site=stackoverflow&filter=withbody&page=${page}&pagesize=${pageSize}`;
-
+		
 		if (activeTab === "Active") {
 			url = `https://api.stackexchange.com/2.3/questions?order=desc&sort=activity&site=stackoverflow&filter=withbody&page=${page}&pagesize=${pageSize}`;
 		} else if (activeTab === "Bountied") {
@@ -174,7 +175,7 @@ export default function Questions() {
 								<a href={q.link} className='text-[#1b75cf] hover:text-[#0a95ff] text-[17px] leading-tight mb-[6px] break-words mt-[-2px]'>
 									{decodeHtml(q.title)}
 								</a>
-								<div className='text-[13px] text-[#3b4045] line-clamp-2 leading-[1.35] mb-[8px] break-words'>
+								<div className='text-[13px] text-[#1a1d20] line-clamp-2 leading-[1.35] mb-[8px] break-words'>
 									{q.body ? decodeHtml(q.body) : ""}
 								</div>
 
@@ -217,7 +218,9 @@ export default function Questions() {
 						</>
 					)}
 
-					{Array.from({ length: 5 }, (_, i) => {
+	
+					{Array.from({length: 5}, (_, i) => {
+
 						let start = Math.max(1, page - 2);
 						if (start > 1610673 - 4) start = 1610673 - 4;
 						return start + i;
@@ -242,6 +245,7 @@ export default function Questions() {
 							</button>
 						</>
 					)}
+
 
 					<button
 						onClick={() => setPage(p => Math.min(1610673, p + 1))}
