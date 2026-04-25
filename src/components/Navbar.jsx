@@ -2,9 +2,9 @@ import { Link } from "react-router";
 
 export default function Navbar() {
 	return (
-		<header className='w-full h-13 bg-amber-600 relative text-sm font-light'>
-			<div className='w-full h-12.5 bg-white absolute top-1 border-b border-slate-700'>
-				<div className='flex justify-around items-center-safe w-full'>
+		<header className='w-full h-[50px] bg-white border-b border-[#e3e6e8] border-t-[3px] border-t-[#f48024] relative text-sm font-light'>
+			<div className='w-full h-full bg-white'>
+				<div className='flex items-center h-full px-3 max-w-[1264px] mx-auto gap-2'>
 					<div className='w-auto h-auto'>
 						<Link to='/'>
 							<svg
@@ -21,7 +21,7 @@ export default function Navbar() {
 							</svg>
 						</Link>
 					</div>
-					<div>
+					<div className='ml-36'>
 						<nav className='flex justify-between gap-10'>
 							<a
 								href='#About'
@@ -32,8 +32,17 @@ export default function Navbar() {
 							<a href='#ForTeams'>For Teams</a>
 						</nav>
 					</div>
-					<div>SEARCH</div>
-					<div className='gap-3 flex h-full'>
+					<div className='flex-1 max-w-[420px] ml-8'>
+						<div className='flex items-center border border-[#babfc4] rounded-lg bg-white hover:border-[#6a737c] focus-within:border-[#6bbbf7] focus-within:shadow-[0_0_0_4px_rgba(107,187,247,0.3)] transition-all px-2 gap-2 h-[33px]'>
+							<svg className='w-[18px] h-[18px] fill-[#babfc4] shrink-0' viewBox='0 0 18 18'><path d='m18 16.5-5.14-5.18h.002A6.5 6.5 0 1 0 1.5 7c0 1.59.57 3.038 1.506 4.164L.5 13.95l1.56 1.56L4.862 12.7A6.493 6.493 0 0 0 7 13.5a6.5 6.5 0 0 0 4.865-2.178l5.143 5.178L18 16.5ZM7 11.5a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9Z' /></svg>
+							<input
+								type='text'
+								placeholder='Search...'
+								className='flex-1 text-[13px] text-[#0c0d0e] outline-none bg-transparent placeholder:text-[#babfc4]'
+							/>
+						</div>
+					</div>
+					<div className='gap-3 flex items-center ml-auto'>
 						<Link
 							to='/login'
 							className='w-18 h-9 border text-blue-500 border-blue-500 rounded-md active:scale-105 transition-all hover:bg-blue-100 justify-center items-center flex'>
