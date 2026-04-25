@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/static-components */
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
@@ -93,8 +92,7 @@ export default function Sidebar() {
                     label="Users"
                     icon={<svg viewBox='0 0 18 18' className={`w-4.5 h-4.5 ${activeItem === "Users" ? "fill-[#0c0d0e]" : "fill-[#525960]"}`}><path d="M5.5 7a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm7 0a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm-7 2C3 9 1 10.5 1 12.5V14h9v-1.5C10 10.5 8 9 5.5 9zm7 0c-.3 0-.6.1-.9.1.5.8.9 1.7.9 2.9V14h5v-1.5C17.5 10.4 15.3 9 12.5 9z" /></svg>}
                 />
-
-                <div className="h-4"></div> 
+                <div className="h-4"></div>
 
                 <MenuButton
                     id="Companies"
@@ -108,12 +106,13 @@ export default function Sidebar() {
                 <div className='text-[11px] font-bold text-gray-950 mb-2 tracking-normal'>
                     STACK INTERNAL
                 </div>
-                <div className='flex items-center gap-2.5 mb-3 text-gray-500]'>
-                    <svg viewBox='0 0 18 18' className='w-4 h-4 fill-none stroke-current stroke-2 stroke-linejoin-round'><path d="M4 2v14h10V2H4zm2 3h6v2H6V5zm6 7H6v-2h6v2z" /></svg>
-                    <svg viewBox='0 0 18 18' className='w-4 h-4 fill-none stroke-current stroke-2 stroke-linejoin-round'><path d="M14.5 4H10L2.5 11.5 6.5 15.5 14 8v-4z" /><circle cx="11.5" cy="5.5" r="1.5" /></svg>
-                    <svg viewBox='0 0 18 18' className='w-4 h-4 fill-none stroke-current stroke-2 stroke-linejoin-round'><path d="M14 2H4v14h10V2zm-2 12H6V4h6v10z" /><path d="M5 10l3 3 5-5" /></svg>
-                    <svg viewBox='0 0 18 18' className='w-4 h-4 fill-none stroke-current stroke-2 stroke-linejoin-round'><path d="M2 16h14v2H2v-2zm2-4h2v4H4v-4zm4-5h2v9H8V7zm4-4h2v13h-2V3z" /></svg>
-                    <svg viewBox='0 0 18 18' className='w-4 h-4 fill-none stroke-current stroke-2 stroke-linejoin-round'><path d="M14.5 5.5l-9 9C4.1 15.9 2 14.5 2 12.5s2.1-3.4 3.5-2L14 2c1.7-1.7 4.5 1 2.8 2.8L7.5 14c-.8.8-2 .2-2-.5s.6-1.2 1.2-1.2L14.5 5.5z" /></svg>
+
+                <div className='flex items-center gap-[10px] mb-3 text-[#525960]'>
+                    <svg viewBox='0 0 18 18' className='w-[16px] h-[16px] fill-[none] stroke-current stroke-2 stroke-linejoin-round'><path d="M4 2v14h10V2H4zm2 3h6v2H6V5zm6 7H6v-2h6v2z"/></svg>
+                    <svg viewBox='0 0 18 18' className='w-[16px] h-[16px] fill-[none] stroke-current stroke-2 stroke-linejoin-round'><path d="M14.5 4H10L2.5 11.5 6.5 15.5 14 8v-4z"/><circle cx="11.5" cy="5.5" r="1.5"/></svg>
+                    <svg viewBox='0 0 18 18' className='w-[16px] h-[16px] fill-[none] stroke-current stroke-2 stroke-linejoin-round'><path d="M14 2H4v14h10V2zm-2 12H6V4h6v10z"/><path d="M5 10l3 3 5-5"/></svg>
+                    <svg viewBox='0 0 18 18' className='w-[16px] h-[16px] fill-[none] stroke-current stroke-2 stroke-linejoin-round'><path d="M2 16h14v2H2v-2zm2-4h2v4H4v-4zm4-5h2v9H8V7zm4-4h2v13h-2V3z"/></svg>
+                    <svg viewBox='0 0 18 18' className='w-[16px] h-[16px] fill-[none] stroke-current stroke-2 stroke-linejoin-round'><path d="M14.5 5.5l-9 9C4.1 15.9 2 14.5 2 12.5s2.1-3.4 3.5-2L14 2c1.7-1.7 4.5 1 2.8 2.8L7.5 14c-.8.8-2 .2-2-.5s.6-1.2 1.2-1.2L14.5 5.5z"/></svg>
                 </div>
                 <div className='text-[13px] text-gray-500 mb-4 leading-[1.3]'>
                     Stack Overflow for Teams is now called <strong>Stack Internal</strong>. Bring the best of human thought and AI automation together at your work.
