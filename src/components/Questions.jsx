@@ -13,6 +13,7 @@ export default function Questions() {
 
 	useEffect(() => {
 		setLoading(true);
+
 		
 		let url = `https://api.stackexchange.com/2.3/questions?order=desc&sort=creation&site=stackoverflow&filter=withbody&page=${page}&pagesize=${pageSize}`;
 		
@@ -73,7 +74,7 @@ export default function Questions() {
 
 	return (
 		<div className='flex-1 lg:pl-6 pl-4 pr-6 pt-6 pb-20 w-full lg:max-w-[727px] ml-[24px]'>
-	
+
 			<div className='flex justify-between items-center mb-6'>
 				<h1 className='text-[27px] font-normal text-gray-800 tracking-tight'>Newest Questions</h1>
 				<button onClick={() => navigate('/login')} className='bg-[#0a95ff] font-medium hover:bg-[#0074cc] text-white px-3 py-[0.55rem] rounded-[3px] shadow-sm transition-colors text-[13px]'>
@@ -81,7 +82,7 @@ export default function Questions() {
 				</button>
 			</div>
 
-		
+
 			<div className='flex flex-wrap gap-4 justify-between items-center mb-4'>
 				<div className='text-gray-800 text-[17px] font-normal'>
 					{loading ? "..." : "24,160,055"} questions
@@ -101,7 +102,7 @@ export default function Questions() {
 						<button onClick={() => handleTabChange("Unanswered")} className={tabButtonClass("Unanswered")}>
 							Unanswered
 						</button>
-						
+
 						<div className="relative">
 							<button onClick={() => setIsMoreOpen(!isMoreOpen)} className='px-[10px] py-[8px] text-[#525960] hover:bg-gray-50 flex items-center gap-1 font-medium'>
 								More
@@ -122,7 +123,7 @@ export default function Questions() {
 							<svg aria-hidden='true' className='w-4 h-4 fill-[#39739d]' viewBox='0 0 18 18'><path d='M2 4h14v2H2V4zm2 4h10v2H4V8zm2 4h6v2H6v-2z'></path></svg>
 							Filter
 						</button>
-						
+
 						{isFilterOpen && (
 							<div className="absolute top-[100%] right-0 mt-1 w-[200px] bg-[#f8f9f9] border border-[#d6d9dc] rounded-[3px] shadow-md z-10 flex flex-col p-3 text-[13px] text-[#3b4045]">
 								<div className="font-bold mb-2">Filter By</div>
@@ -151,7 +152,7 @@ export default function Questions() {
 				) : (
 					questions.map((q) => (
 						<div key={q.question_id} className='flex py-4 border-b border-[#e3e6e8]'>
-	
+
 							<div className='flex flex-col items-end w-[108px] pr-4 gap-[6px] flex-shrink-0 text-[13px]'>
 								<div className='text-[#0c0d0e]'>
 									<span className='font-medium'>{q.score}</span> votes
@@ -216,8 +217,10 @@ export default function Questions() {
 							{page > 4 && <span className="text-[#3b4045] px-1 text-[13px] tracking-widest">...</span>}
 						</>
 					)}
-					
+
+	
 					{Array.from({length: 5}, (_, i) => {
+
 						let start = Math.max(1, page - 2);
 						if (start > 1610673 - 4) start = 1610673 - 4;
 						return start + i;
@@ -242,7 +245,8 @@ export default function Questions() {
 							</button>
 						</>
 					)}
-					
+
+
 					<button
 						onClick={() => setPage(p => Math.min(1610673, p + 1))}
 						className="px-3 py-[5px] text-[13px] border border-[#d6d9dc] rounded-[3px] text-[#3b4045] bg-white hover:bg-gray-50 transition-colors"

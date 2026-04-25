@@ -1,6 +1,7 @@
 import Featured from "./Featured";
 import Questions from "./Questions";
 import Sidebar from "./Sidebar";
+import Footer from "./Footer";
 
 export default function Container() {
 	return (
